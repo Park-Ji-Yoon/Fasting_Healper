@@ -11,21 +11,48 @@
 <body>
     <div class="container">
         <div class="header">
-            <p id="welcome">단식 도우미에 오신 것을 환영합니다</p>
+            <p id="welcome">간헐적 단식</p>
             <button id="explain_btn">
                 더보기
             </button>
             <p id="explain">
-                단식 도우미는 단식과 간헐적 단식을 도와주는 웹사이트입니다.<br>
-                단식에는 24시간, 48시간, 72시간 단식이 각각 있습니다.<br>
-                간헐적 단식에는 12:12, 16:8, 18:6, 20:4, 이렇게 4 종류가 있습니다.<br>
-                자신의 몸에 맞는 단식&간헐적 단식으로 건강한 몸을 만들어 나가봅시다.
+                간헐적 단식은 식이요법의 한 종류로 공복 효과를 최대한 활용하는 방법입니다.<br>
+                간헐적 단식은 스스로 선택하시는 것이며, 자신의 몸 상태에 맞게 진행하셔야 합니다.<br>
+                특정 질환을 앓고 있거나, 임산부인 경우 단식은 금물입니다. <a href="fasting_precaution.html" target="_blank">주의사항 더보기</a><br>
+                자신의 몸에 맞는 간헐적 단식으로 건강한 몸을 만들어 나가봅시다.
             </p>
         </div>
         <div class="content">
-            <button id="fasting_btn" type="button" onClick="location.href='fasting.html'">
+            <p id="how">
+                <span id="how_title">단식 방법<br><br></span>
+                <span>준비 단계</span><br>
+                1. 본인에게 맞는 단식 시간을 찾습니다.<br>
+                2. 식사의 질과 내용을 신경씁니다.<br>
+                (권장: 탄수화물 줄이기, 주의: 폭식과 자유식)<br><br>
+                <span>실행 단계</span><br>
+                1. 매일 충분한 수분 섭취를 해줍니다.<br>
+                2. 꾸준한 근력 운동을 동반해줍니다.<br>
+                3. 단식하는 동안에는 확실하게 아무것도 먹지 않습니다.<br>
+                4. 과식과 과로를 피합니다.<br>
+                5. 간헐적 단식의 주 목적은 다이어트가 아닌 건강한 생활습관을 만드는 것임을 유의합니다.<br>
+            </p><br><br><br>
+            <p id="more_info">
+                더 많은 정보<br>
+                <a href="https://www.youtube.com/watch?v=y_VTqD38p6I" target="_blank">간헐적 단식을 하면 좋지 않은 사람</a><br>
+                <a href="http://www.vogue.co.kr/2019/02/12/%EA%B0%84%ED%97%90%EC%A0%81-%EB%8B%A8%EC%8B%9D%EC%9D%84-%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-10%EA%B0%80%EC%A7%80-%ED%82%A4%EC%9B%8C%EB%93%9C/" target="_blank">간헐적 단식을 위해 기억해야 할 10가지</a><br>
+                <a href="https://m.blog.naver.com/yashin1210/221494958302" target="_blank">간헐적 단식 방법 완벽정리</a>
+            </p>
+            <button class="IFfasting_start_btn" id="12_12" type="button" onClick="location.href='.html'">
+                <p>12:12 간헐적 단식</p>
             </button>
-            <button id="IF_btn" type="button" onClick="location.href='IF_fasting.html'">
+            <button class="IFfasting_start_btn" id="16_8" type="button" onClick="location.href='.html'">
+                <p>16:8 간헐적 단식</p>
+            </button>
+            <button class="IFfasting_start_btn" id="18_6" type="button" onClick="location.href='.html'">
+                <p>18:6 간헐적 단식</p>
+            </button>
+            <button class="IFfasting_start_btn" id="20_4" type="button" onClick="location.href='.html'">
+                <p>20:4 간헐적 단식</p>
             </button>
         </div>
         <div class="footer">
@@ -35,5 +62,5 @@
 		</div>
     </div>
 </body>
-<script src="../js/js_IF_fasting.js"></script>
+<script src="../js/js_fasting.js"></script>
 </html>
