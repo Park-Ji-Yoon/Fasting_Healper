@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fasting-Helper-IF fasting</title>
+    <link rel="stylesheet" href="../css/style_IF_fasting_progress.css"/>
+    <link rel="shortcut icon" href="../image/fasting_helper_icon.ico">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            
+        </div>
+        <div class="content">
+            <select class="select_time" id="start_time" onchange="changeStartSelect()">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+            </select>
+            <select class="select_time" id="end_time" onchange="changeEndSelect()">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+            </select>
+            <button id="confirm" onclick="moveStartIFfasting()">
+                확인
+            </button>
+        </div>
+        <div class="footer">
+			<div id="download">
+				You can download codes in <a href="https://github.com/Park-Ji-Yoon/ToDoList" target="_blank">here</a> !!
+			</div>
+		</div>
+    </div>
+</body>
+<script>
+    // 현재 URL 가져오기 
+    var url = location.href; 
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    var start_time = document.getElementById("start_time");
+    var end_time = document.getElementById("end_time");
+    var num = 0
+
+    if(parameters == '12_12'){
+        num = 12;
+    } else if(parameters == '16_8'){
+        num = 8;
+    } else if(parameters == '18_6'){
+        num = 6;
+    } else if(parameters == '20_4'){
+        num = 4;
+    } else{
+        console.log('error');
+    }
+
+    // 시작 시간 select 변경 시 메서드
+    function changeStartSelect(){
+        var start = start_time.options[start_time.selectedIndex].value;
+        if(Number(start) + num > 24){
+            alert(start + "보다 빠른 시간을 선택해주세요");
+            start_time.value = 1;
+        }else{
+            end_time.value = Number(start) + num
+        }
+    }
+    // 끝 시간 select 변경 시 메서드
+    function changeEndSelect(){
+        var end = end_time.options[end_time.selectedIndex].value;
+        if(Number(end) - num < 0){
+            alert(end + "보다 늦은 시간을 선택해주세요");
+            end_time.value = 1;
+        }else{
+            start_time.value = Number(end) - num;
+        }
+    }
+
+    function moveStartIFfasting(){
+        location.href="IF_fasting_ongoing.html?" + start_time.options[start_time.selectedIndex].value + "/" + end_time.options[end_time.selectedIndex].value;
+    }
+</script>
+</html>
