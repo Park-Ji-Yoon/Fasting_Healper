@@ -23,12 +23,19 @@ body{
 .content{
     width: 60%;
 }
+p{
+    font-family: 'Nanum Myeongjo', serif;
+	font-weight: 500;
+    font-size: 20px;
+    padding: 10px;
+    color: #EDF5E1;
+}
 .select_time {
     position: relative;
     display: inline-block;
     vertical-align: middle;
     margin: 10px; /* demo only */
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Nanum Myeongjo', serif;
 	font-weight: 500;
     font-size: 24px !important;
 } 
@@ -114,7 +121,7 @@ body{
 	background-color: #165f50;
 }
 #download{
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Nanum Myeongjo', serif;
 	font-weight: 500;
 	font-size: 18px;
 	color: #ffffff;

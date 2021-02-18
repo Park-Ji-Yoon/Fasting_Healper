@@ -14,7 +14,17 @@
             
         </div>
         <div class="content">
-            
+            <div class="clock">
+                <div class="wrap">
+                  <span class="hour"></span>
+                  <span class="minute"></span>
+                  <span class="second"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+              <div class="text">
+                  단식 시간입니다
+              </div>
         </div>
         <div class="footer">
 			<div id="download">
@@ -23,4 +33,40 @@
 		</div>
     </div>
 </body>
+<script>
+    // 현재 URL 가져오기 
+    var url = location.href; 
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('/');
+
+    var inc = 1000;
+    clock();
+    function clock() {
+        const date = new Date();
+
+        const hours = ((date.getHours() + 11) % 12 + 1);
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        
+        const hour = hours * 30;
+        const minute = minutes * 6;
+        const second = seconds * 6;
+        
+        document.querySelector('.hour').style.transform = `rotate(${hour}deg)`
+        document.querySelector('.minute').style.transform = `rotate(${minute}deg)`
+        document.querySelector('.second').style.transform = `rotate(${second}deg)`
+        
+        if(hour / 10 >= Number(parameters[0]) && hour / 10 <= Number(parameters[1])){
+            document.querySelector('.clock').style.background = "pink";
+            document.querySelector('.text').innerHTML = '음식을 드셔도 되는 시간입니다';
+        }
+        if(hour / 10 < Number(parameters[0]) || hour / 10 > Number(parameters[1])){
+            document.querySelector('.clock').style.background = "white";
+            document.querySelector('.text').innerHTML = '단식 시간입니다';
+        }
+        // 디버그용 코드
+        // console.log(hour / 10, hour, Number(parameters[0]), Number(parameters[1]))
+    }
+    // 일정한 시간 간격으로 작업을 수행하기 위해서 사용
+    setInterval(clock, inc);
+</script>
 </html>
