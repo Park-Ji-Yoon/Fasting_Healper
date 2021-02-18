@@ -55,16 +55,16 @@
         document.querySelector('.minute').style.transform = `rotate(${minute}deg)`
         document.querySelector('.second').style.transform = `rotate(${second}deg)`
         
-        if(hour / 10 >= Number(parameters[0]) && hour / 10 <= Number(parameters[1])){
+        if(date.getHours() >= Number(parameters[0]) && date.getHours() <= Number(parameters[1])){
             document.querySelector('.clock').style.background = "pink";
             document.querySelector('.text').innerHTML = '음식을 드셔도 되는 시간입니다';
         }
-        if(hour / 10 < Number(parameters[0]) || hour / 10 > Number(parameters[1])){
+        if(date.getHours() < Number(parameters[0]) || date.getHours() > Number(parameters[1])){
             document.querySelector('.clock').style.background = "white";
             document.querySelector('.text').innerHTML = '단식 시간입니다';
         }
         // 디버그용 코드
-        // console.log(hour / 10, hour, Number(parameters[0]), Number(parameters[1]))
+        // console.log(date.getHours(), hour / 10, hour, Number(parameters[0]), Number(parameters[1]))
     }
     // 일정한 시간 간격으로 작업을 수행하기 위해서 사용
     setInterval(clock, inc);
