@@ -14,7 +14,20 @@
             
         </div>
         <div class="content">
-            
+            <div class="clock">
+                <div class="wrap">
+                  <span class="hour"></span>
+                  <span class="minute"></span>
+                  <span class="second"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+              <div class="text">
+                단식 시작 시간
+              </div>
+              <div class="text" id="accumulate">
+                단식 누적 시간
+              </div>
         </div>
         <div class="footer">
 			<div id="download">
@@ -23,4 +36,66 @@
 		</div>
     </div>
 </body>
+<script>
+    // 현재 URL 가져오기 
+    var url = location.href; 
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    var num = 0;
+
+    if(parameters == '24'){
+        num = 24;
+    } else if(parameters == '48'){
+        num = 48;
+    } else if(parameters == '72'){
+        num = 72;
+    } else{
+
+    }
+
+    const now = new Date();
+    document.querySelector('.text').innerHTML = 
+        "단식 시작" + 
+        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + 
+        now.getFullYear() + "년&nbsp;" + 
+        (now.getMonth() + 1) + "월&nbsp;" + 
+        now.getDate() + "일&nbsp;&nbsp;" + 
+        now.getHours() + " : " + now.getMinutes();
+
+    var inc = 1000;
+    clock();
+    function clock() {
+        const date = new Date();
+
+        const hours = ((date.getHours() + 11) % 12 + 1);
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        
+        const hour = hours * 30;
+        const minute = minutes * 6;
+        const second = seconds * 6;
+        
+        document.querySelector('.hour').style.transform = `rotate(${hour}deg)`
+        document.querySelector('.minute').style.transform = `rotate(${minute}deg)`
+        document.querySelector('.second').style.transform = `rotate(${second}deg)`
+        
+        const accumulate_date = date - now; 
+        const accumulate_sec = accumulate_date / 1000; 
+        const accumulate_min = accumulate_date / 1000 / 60; 
+        const accumulate_hour = accumulate_date / 1000 / 60 / 60;
+
+        if(accumulate_hour == num){
+            alert("목표하신&nbsp;" + num + "시간 단식에 성공하셔습니다");
+        }
+
+        // 디버그용 코드
+        // console.log(elapsedSec, elapsedMin, elapsedHour)
+        document.querySelector("#accumulate").innerHTML = 
+            "단식한 지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + 
+            Math.round(accumulate_hour) + "시간&nbsp;" + 
+            Math.round(accumulate_min) + "분&nbsp;" + 
+            Math.round(accumulate_sec) + "초";
+    }
+    // 일정한 시간 간격으로 작업을 수행하기 위해서 사용
+    setInterval(clock, inc);
+</script>
 </html>

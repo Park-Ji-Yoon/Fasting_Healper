@@ -42,13 +42,13 @@
                 <a href="https://blog.naver.com/andy720813/220691303737" target="_blank">올바른 단식방법과 단식 후 보식하기</a><br>
                 <a href="http://biumstay.com/bbs/page.php?hid=understand" target="_blank">단식의이해방법 > 자연머뭄</a>
             </p>
-            <button class="fasting_start_btn" id="24hours" type="button" onClick="location.href='.html'">
+            <button class="fasting_start_btn" id="24hours" name="24" type="button" onClick="moveFasting(this.name)">
                 <p>24시간 단식 시작하기</p>
             </button>
-            <button class="fasting_start_btn" id="48hours" type="button" onClick="location.href='.html'">
+            <button class="fasting_start_btn" id="48hours" name="48" type="button" onClick="moveFasting(this.name)">
                 <p>48시간 단식 시작하기</p>
             </button>
-            <button class="fasting_start_btn" id="72hours" type="button" onClick="location.href='.html'">
+            <button class="fasting_start_btn" id="72hours" name="72" type="button" onClick="moveFasting(this.name)">
                 <p>72시간 단식 시작하기</p>
             </button>
         </div>
@@ -60,4 +60,10 @@
     </div>
 </body>
 <script src="../js/js_fasting.js"></script>
+<script>
+    // fasting_progress.html 파일로 사용자가 선택한 단식 시간 전송
+    function moveFasting(name){
+        location.href="fasting_ongoing.html?" + name;
+    }
+</script>
 </html>
